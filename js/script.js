@@ -1,12 +1,25 @@
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
+
+const getElement = id => {
+    return document.getElementById(`${id}`);
+}
+
 const searchBook = () => {
     const inputField = document.getElementById('search-field');
     const inputText = inputField.value;
+    //clearing screen
     inputField.value = '';
+    //getElement is a function
+    getElement('number-of-results').innerHTML = '';
+    getElement('search-result').innerHTML = '';
+    toggleSpinner('block');
     //empty input handle
     if (inputText === '') {
 
     } else {
-        const url = `http://openlibrary.org/search.json?q=${inputText}`;
+        const url = `https://openlibrary.org/search.json?q=${inputText}`;
         fetch(url)
             .then(res => res.json())
             .then(data => findResult(data))
@@ -14,24 +27,23 @@ const searchBook = () => {
 
 }
 
-findResult = Allresults => {
+const findResult = Allresults => {
     const numberOfResultsFound = Allresults.numFound;
-
-
     //first showing number of results found 
-    const numberOfResult = document.getElementById('number-of-results');
+    const numberOfResult = getElement('number-of-results');
     if (numberOfResultsFound === 0) {
-        numberOfResult.innerHTML = `<h6>No Result Found</h6>`
+        numberOfResult.innerHTML = `<h3>No Result Found</h3>`
+        toggleSpinner('none');
     } else {
-        numberOfResult.innerHTML = `<h6>${numberOfResultsFound} Books Found</h6>`;
+        numberOfResult.innerHTML = `<h3 class="fw-bold mb-3 py-3">Total ${numberOfResultsFound} Books Found</h3>`;
         showResult(Allresults.docs);
     }
 }
 
 //trying to show results
-showResult = books => {
-    const parentDiv = document.getElementById('search-result');
-    parentDiv.textContent = '';
+const showResult = books => {
+    const parentDiv = getElement('search-result');
+    // parentDiv.textContent = '';
     //working on all books (docs array) using foreach loop to show each book
     books.forEach(book => {
         //first check for cover
@@ -79,5 +91,6 @@ showResult = books => {
         `
         parentDiv.appendChild(child);
     });
+    toggleSpinner('none');
 
 }
