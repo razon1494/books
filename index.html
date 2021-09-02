@@ -11,10 +11,18 @@
     <!-- BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        #heading {
+            color: DarkSlateGrey;
+        }
+        
         #spinner {
             display: none;
             font-size: 3rem;
-            color: SandyBrown;
+            color: sandybrown;
+        }
+        
+        .single-book:hover {
+            background-color: rgba(250, 235, 215, 0.472);
         }
     </style>
 
@@ -22,31 +30,32 @@
 
 <body>
     <!-- Book Search Area -->
-    <h2 class="text-center text-success mt-4">Look For Your Desired Books </h2>
-    <div class="input-group mb-3 w-50 mx-auto">
-        <input id="search-field" type="text" class="form-control" placeholder="Book Name/Author Name" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button onclick="searchBook()" class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
-    </div>
+    <header>
+        <h1 id="heading" class="text-center mt-4">Look For Your Desired Books </h1>
+        <div class="input-group mb-3 w-50 mx-auto">
+            <input id="search-field" type="text" class="form-control" placeholder="Book Name/Author Name" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button onclick="searchBook()" class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+        </div>
+    </header>
 
-    <!-- Loading -->
-    <div id="spinner" class="text-center">
-        <div class="spinner-grow" role="status"></div>
-        <p>loading...</p>
-        <div class="spinner-grow" role="status"></div>
-    </div>
+    <main>
+        <!-- Loading -->
+        <div id="spinner" class="text-center">
+            <div class="spinner-grow" role="status"></div>
+            <p>loading...</p>
+            <div class="spinner-grow" role="status"></div>
+        </div>
 
-    <!-- Book Search Result Numbers -->
-    <div id="number-of-results" class="text-center">
+        <!-- Book Search Result Numbers -->
+        <div id="number-of-results" class="text-center">
 
-    </div>
-    <!-- Book Search Result -->
-    <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 mx-auto container">
-    </div>
+        </div>
+        <!-- Book Search Result -->
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 mx-auto container">
+        </div>
 
 
-    <!-- <div id="spinner" class="spinner-border d-none" role="status">
-        <span class="sr-only"></span>
-    </div> -->
+    </main>
 
 
     <!-- BOOTSTRAP JS -->

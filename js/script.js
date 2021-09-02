@@ -46,6 +46,7 @@ const findResult = Allresults => {
 
 //trying to show results
 const showResult = books => {
+    console.log(books);
     const parentDiv = getElement('search-result');
     //working on all books (docs array) using foreach loop to show each book
     books.forEach(book => {
@@ -82,6 +83,7 @@ const showResult = books => {
         child.classList.add('card');
         child.classList.add('col-3');
         child.classList.add('mx-5');
+        child.classList.add('single-book');
         child.innerHTML = `
         <img src="${coverUrl}" class="card-img-top w-75 h-75 mt-2 rounded mx-auto" alt="Cover Not Available" >
         <div class="card-body">
