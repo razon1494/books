@@ -46,7 +46,6 @@ const findResult = Allresults => {
 
 //trying to show results
 const showResult = books => {
-    console.log(books);
     const parentDiv = getElement('search-result');
     //working on all books (docs array) using foreach loop to show each book
     books.forEach(book => {
